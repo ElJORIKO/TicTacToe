@@ -1,11 +1,15 @@
-package ru.ElJORIKO.main;
+package main;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class InPut {
+	private static final Scanner scan = new Scanner(System.in);
+	public static void closeScanner(){
+		scan.close();
+	}
 	public static int[] getPosition(){
-		Scanner scan = new Scanner(System.in);
+		System.out.print("enter position: ");
 		String value = scan.nextLine();
 		char[] b = value.toCharArray();
 		if (b.length > 2) {
@@ -17,5 +21,12 @@ public class InPut {
 			result[i] = (int) b[i];
 		}
 		return result;
+	}
+	public static char getPlayer(){
+		System.out.print("Enter Player: ");
+		char[] chars;
+		chars = scan.nextLine().toCharArray();
+
+		return chars[0];
 	}
 }

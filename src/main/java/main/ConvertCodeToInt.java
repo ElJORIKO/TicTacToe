@@ -1,4 +1,4 @@
-package ru.ElJORIKO.main;
+package main;
 
 public class ConvertCodeToInt {
 	public static int codeToInt(int code){
