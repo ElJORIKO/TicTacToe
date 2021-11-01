@@ -1,8 +1,10 @@
 package main;
 
+import main.start.Main;
+
 public class Table {
 	private static final char SPACE = 32;
-	private static char[][] table = new char[3][3];
+	private static char[][] table = new char[Main.HEIGHT][Main.LENGTH];
 	private static void updateTable(char[][] newTable){
 		Table.table = newTable;
 	}
@@ -11,8 +13,8 @@ public class Table {
 	}
 	public static void maleEmptyTable(){
 		char[][] table = getTable();
-		for (int i = 0; i <= 2; i++){
-			for (int j = 0; j <= 2; j++){
+		for (int i = 0; i < Main.HEIGHT; i++){
+			for (int j = 0; j < Main.LENGTH; j++){
 				table[i][j] = SPACE;
 			}
 		}
