@@ -3,8 +3,8 @@ package main.start;
 import main.*;
 
 public class Main {
-	public static int HEIGHT = 8;
-	public static int LENGTH = 8;
+	public static int HEIGHT = 3;
+	public static int LENGTH = 3;
 	public static void main(String[] args) {
 		Table.maleEmptyTable();
 		OutPut.outPutTable();
@@ -21,7 +21,7 @@ public class Main {
 			Table.setSymbol(position,player);
 			if (ifWin.ifPlayerWin(player, position)){
 				OutPut.outPutTable();
-				System.out.println(player + "win");
+				System.out.println(player.getPlayer() + " win");
 				break;
 			}
 			OutPut.outPutTable();
@@ -32,7 +32,7 @@ public class Main {
 			Table.setSymbol(position,player2);
 			if (ifWin.ifPlayerWin(player2, position)){
 				OutPut.outPutTable();
-				System.out.println(player + "win");
+				System.out.println(player.getPlayer() + " win");
 				break;
 			}
 			OutPut.outPutTable();
