@@ -1,7 +1,10 @@
 package main.table;
 
+import main.player.ComputerPlayer;
 import main.player.Player;
 import main.start.Main;
+
+import java.util.Arrays;
 
 public class Table {
 	private static final char SPACE = 32;
@@ -21,7 +24,7 @@ public class Table {
 		}
 	}
 
-	public static void setSymbol(Position position, Player player){
+	public static void setSymbol(Position position, ComputerPlayer player){
 		int[] pos = position.getPosition();
 		char[][] table = getTable();
 		if (!isBlockBusy(position)){
@@ -29,6 +32,16 @@ public class Table {
 			return;
 		}
 		table[pos[0]][pos[1]] = player.getPlayer();
+	}
+	public static boolean setSymbol(Position position, Player player){
+		int[] pos = position.getPosition();
+		char[][] table = getTable();
+		if (!isBlockBusy(position)){
+			System.out.println("This bloc is busy");
+			return false;
+		}
+		table[pos[0]][pos[1]] = player.getPlayer();
+		return true;
 	}
 
 	public static boolean hasEmptyBlockAtTable(){
@@ -42,9 +55,12 @@ public class Table {
 		}
 		return false;
 	}
-
+	public static boolean test(Position position){
+		return isBlockBusy(position);
+	}
 	private static boolean isBlockBusy(Position position){
 		int[] pos = position.getPosition();
+		System.out.println(Arrays.toString(pos));
 		return getTable()[pos[0]][pos[1]] == SPACE;
 	}
 }
