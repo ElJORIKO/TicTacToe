@@ -53,7 +53,7 @@ public class Main {
 			do {
 				s = computerPlayer.actionDoStep();
 				position.setPosition(s[0],s[1]);
-			} while (!Table.setSymbol(position,player));
+			} while (!Table.setSymbol(position,player2));
 			if (ifWin.ifPlayerWin(player2, position)){
 				OutPut.outPutTable();
 				System.out.println(player2.getPlayer() + " win");

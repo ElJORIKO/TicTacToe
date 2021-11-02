@@ -17,7 +17,7 @@ public class ComputerPlayer {
 		this.player = player;
 	}
 	public int[] actionDoStep() {
-		int min = 49, max = 51;
+		int min = 1, max = 3;
 		max -= min;
 		int result, result2;
 		Position pos;
@@ -28,7 +28,7 @@ public class ComputerPlayer {
 			pos = new Position();
 			char c = (char) result;
 			char c1 = (char) result2;
-			pos.setPosition(ConvertCodeToInt.codeToInt(c), ConvertCodeToInt.codeToInt(c1));
+			pos.test(result,result2);
 		} while (!Table.test(pos));
 		Position pos2;
 		pos2 = pos;
