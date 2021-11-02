@@ -7,7 +7,8 @@ public class Position {
 		this.x = x - 1;
 		this.y = y - 1;
 	}
-	public void test(int x, int y){
+	public void setPositionWithoutCorrect(int x, int y){
+		System.out.println("x - " + x + " y - " + y);
 		this.x = x;
 		this.y = y;
 	}
