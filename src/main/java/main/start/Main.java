@@ -1,6 +1,11 @@
 package main.start;
 
 import main.*;
+import main.inOut.InPut;
+import main.inOut.OutPut;
+import main.player.Player;
+import main.table.Position;
+import main.table.Table;
 
 public class Main {
 	public static int HEIGHT = 3;

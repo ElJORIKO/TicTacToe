@@ -1,5 +1,6 @@
-package main;
+package main.table;
 
+import main.player.Player;
 import main.start.Main;
 
 public class Table {

@@ -1,5 +1,9 @@
 package main;
 
+import main.player.Player;
+import main.table.Position;
+import main.table.Table;
+
 public class CheckWins {
 	private int x, y;
 	private int getX(){
@@ -16,7 +20,7 @@ public class CheckWins {
 	private void setTABLE(){
 		this.TABLE = Table.getTable();
 	}
-	public boolean ifPlayerWin(Player player,Position position){
+	public boolean ifPlayerWin(Player player, Position position){
 		setXY(position);
 		setTABLE();
 		return horizontal(player) | vertical(player);

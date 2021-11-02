@@ -1,5 +1,6 @@
-package main;
+package main.inOut;
 
+import main.table.Table;
 import main.start.Main;
 
 public class OutPut {

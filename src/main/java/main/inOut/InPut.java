@@ -1,6 +1,5 @@
-package main;
+package main.inOut;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class InPut {

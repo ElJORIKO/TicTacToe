@@ -1,4 +1,4 @@
-package main;
+package main.table;
 
 public class Position {
 	private int x;
