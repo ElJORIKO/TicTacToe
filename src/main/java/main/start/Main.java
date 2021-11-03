@@ -9,8 +9,8 @@ import main.table.Position;
 import main.table.Table;
 
 public class Main {
-	public static int HEIGHT = 3;
-	public static int LENGTH = 3;
+	public static int HEIGHT = 4;
+	public static int LENGTH = 4;
 	public static void main(String[] args) {
 		Table.maleEmptyTable();
 		OutPut.outPutTable();

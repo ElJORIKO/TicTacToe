@@ -1,6 +1,5 @@
 package main;
 
-import main.player.ComputerPlayer;
 import main.player.Player;
 import main.start.Main;
 import main.table.Position;
@@ -22,6 +21,9 @@ public class CheckWins {
 	private void setTABLE(){
 		this.TABLE = Table.getTable();
 	}
+	private char getSymbolAtTable(Position position){
+		return TABLE[position.getPosition()[0]][position.getPosition()[1]];
+	}
 	public boolean ifPlayerWin(Player player, Position position){
 		setXY(position);
 		setTABLE();
@@ -29,44 +31,61 @@ public class CheckWins {
 	}
 	private boolean horizontal(Player player){
 		int winCount = 0;
-		for (int i = 0; i <= 3; i++){
-			Position pos = new Position();
-			pos.setPositionWithoutCorrect(x, y);
-			for (int horizontalLeft = 1; horizontalLeft <= 2; horizontalLeft++){
-				pos.setPositionWithoutCorrect(x - horizontalLeft, y);
-				if (!isEndOfTable(pos) & TABLE[x - i][y] == player.getPlayer()){
-					winCount++;
-				} else {
-					winCount = 0;
-				}
-				if (winCount == 2) { return true; }
+		Position pos = new Position();
+		pos.setPositionWithoutCorrect(x, y);
+		for (int horizontalLeft = 1; horizontalLeft <= 2; horizontalLeft++){
+			pos.setPositionWithoutCorrect(x, y - horizontalLeft);
+			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+				winCount++;
+			} else {
+				winCount = 0;
 			}
-
-			pos.setPositionWithoutCorrect(x, y);
+			if (winCount == 2) { return true; }
 		}
+		pos.setPositionWithoutCorrect(x, y);
+		for (int horizontalRight = 1; horizontalRight <=2; horizontalRight++){
+			pos.setPositionWithoutCorrect(x, y + horizontalRight);
+			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+				winCount++;
+			} else {
+				winCount = 0;
+			}
+			if (winCount == 2) { return true; }
+		}
+		return false;
+	}
+	private boolean vertical(Player player){
+		int winCount = 0;
 //		for (int i = 0; i < TABLE.length; i++){
-//			if (TABLE[x][i] == player.getPlayer()){
+//			if (TABLE[i][y] == player.getPlayer()){
 //				winCount++;
 //			} else {
 //				winCount = 0;
 //			}
 //			if (winCount == 3){
-//				System.out.println("Horizontal");
+//				System.out.println("Vertical");
 //				return true;}
 //		}
-		return false;
-	}
-	private boolean vertical(Player player){
-		int winCount = 0;
-		for (int i = 0; i < TABLE.length; i++){
-			if (TABLE[i][y] == player.getPlayer()){
+		Position pos = new Position();
+		pos.setPositionWithoutCorrect(x, y);
+		for (int verticalUp = 1; verticalUp <= 2; verticalUp++){
+			pos.setPositionWithoutCorrect(x + verticalUp, y);
+			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
 				winCount++;
 			} else {
 				winCount = 0;
 			}
-			if (winCount == 3){
-				System.out.println("Vertical");
-				return true;}
+			if (winCount == 2) { return true; }
+		}
+		pos.setPositionWithoutCorrect(x, y);
+		for (int verticalDown = 1; verticalDown <=2; verticalDown++){
+			pos.setPositionWithoutCorrect(x - verticalDown, y);
+			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+				winCount++;
+			} else {
+				winCount = 0;
+			}
+			if (winCount == 2) { return true; }
 		}
 		return false;
 	}
@@ -129,9 +148,9 @@ public class CheckWins {
 	private boolean isEndOfTable(Position position){
 		int x = position.getPosition()[0];
 		int y = position.getPosition()[1];
-		if (x < 0 & y < 0){
+		if (x < 0 | y < 0){
 			return false;
-		} else if (x > Main.HEIGHT & y > Main.LENGTH){
+		} else if (x > Main.HEIGHT - 1 | y > Main.LENGTH - 1){
 			return false;
 		} else {
 			return true;
