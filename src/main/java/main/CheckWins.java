@@ -35,7 +35,7 @@ public class CheckWins {
 		pos.setPositionWithoutCorrect(x, y);
 		for (int horizontalLeft = 1; horizontalLeft <= 2; horizontalLeft++){
 			pos.setPositionWithoutCorrect(x, y - horizontalLeft);
-			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+			if (isPosEqualPlayer(pos,player)){
 				winCount++;
 			} else {
 				winCount = 0;
@@ -45,7 +45,7 @@ public class CheckWins {
 		pos.setPositionWithoutCorrect(x, y);
 		for (int horizontalRight = 1; horizontalRight <=2; horizontalRight++){
 			pos.setPositionWithoutCorrect(x, y + horizontalRight);
-			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+			if (isPosEqualPlayer(pos,player)){
 				winCount++;
 			} else {
 				winCount = 0;
@@ -56,21 +56,11 @@ public class CheckWins {
 	}
 	private boolean vertical(Player player){
 		int winCount = 0;
-//		for (int i = 0; i < TABLE.length; i++){
-//			if (TABLE[i][y] == player.getPlayer()){
-//				winCount++;
-//			} else {
-//				winCount = 0;
-//			}
-//			if (winCount == 3){
-//				System.out.println("Vertical");
-//				return true;}
-//		}
 		Position pos = new Position();
 		pos.setPositionWithoutCorrect(x, y);
 		for (int verticalUp = 1; verticalUp <= 2; verticalUp++){
 			pos.setPositionWithoutCorrect(x + verticalUp, y);
-			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+			if (isPosEqualPlayer(pos,player)){
 				winCount++;
 			} else {
 				winCount = 0;
@@ -80,7 +70,7 @@ public class CheckWins {
 		pos.setPositionWithoutCorrect(x, y);
 		for (int verticalDown = 1; verticalDown <=2; verticalDown++){
 			pos.setPositionWithoutCorrect(x - verticalDown, y);
-			if (isEndOfTable(pos) && getSymbolAtTable(pos) == player.getPlayer()){
+			if (isPosEqualPlayer(pos,player)){
 				winCount++;
 			} else {
 				winCount = 0;
@@ -91,60 +81,55 @@ public class CheckWins {
 	}
 
 	private boolean diagonal(Player player){
-		int winCount = 0, verticalTable = Main.HEIGHT, horizontalTable = Main.LENGTH;
-		int xPos = x;
-		int yPos = y;
-		if (xPos == 0 && yPos == 0){
-				while (xPos != verticalTable | yPos != horizontalTable){
-					if (TABLE[xPos++][yPos++] == player.getPlayer()){
-						winCount++;
-					} else {
-						winCount = 0;
-					}
-					if (winCount == 3) {return true; }
-				}
+		int winCount = 0;
+		Position pos = new Position();
+		pos.setPositionWithoutCorrect(x,y);
+		for (int downRight = 1; downRight <= 2; downRight++){
+			System.out.println("\tx = " + (x + downRight) + " y = " + (y - downRight));
+			pos.setPositionWithoutCorrect(x + downRight, y - downRight);
+			if (isPosEqualPlayer(pos,player)){
+				winCount++;
+			} else {
+				winCount = 0;
 			}
-		xPos = x;
-		yPos = y;
-		if (xPos == --verticalTable && yPos == --horizontalTable) {
-				while (xPos != 0 | yPos != 0){
-					if (TABLE[xPos--][yPos--] == player.getPlayer()){
-						winCount++;
-					} else {
-						winCount =0;
-					}
-					if (winCount == 3) {return true; }
-				}
+			if (winCount == 2) { return true; }
+		}
+		for (int downLeft = 1; downLeft <= 2; downLeft++){
+			System.out.println("\tx = " + (x + downLeft) + " y = " + (y + downLeft));
+			pos.setPositionWithoutCorrect(x + downLeft, y + downLeft);
+			if (isPosEqualPlayer(pos,player)){
+				winCount++;
+			} else {
+				winCount = 0;
 			}
-		xPos = x;
-		yPos = y;
-		if (xPos == 0 & yPos == --horizontalTable){
-			System.out.println("x - 0 y - 3");
-			while (xPos >= verticalTable && yPos >= 0) {
-					if (TABLE[xPos++][yPos--] == player.getPlayer()) {
-						winCount++;
-					} else {
-						winCount = 0;
-					}
-					if (winCount == 3) {return true; }
-				}
+			if (winCount == 2) { return true; }
+		}
+		for (int upLeft = 1; upLeft <= 2; upLeft++){
+			System.out.println("\tx = " + (x - upLeft) + " y = " + (y - upLeft));
+			pos.setPositionWithoutCorrect(x - upLeft, y - upLeft);
+			if (isPosEqualPlayer(pos,player)){
+				winCount++;
+			} else {
+				winCount = 0;
 			}
-		xPos = x;
-		yPos = y;
-		if (xPos <= --horizontalTable && yPos == 0){
-			System.out.println("x - 3 y - 0");
-				while (xPos >= 0 & yPos <= horizontalTable){
-					if (TABLE[xPos--][yPos++] == player.getPlayer()){
-						winCount++;
-					} else {
-						winCount = 0;
-					}
-					if (winCount == 3) {return true; }
-				}
+			if (winCount == 2) { return true; }
+		}
+		for (int upRight = 1; upRight <= 2; upRight++){
+			System.out.println("\tx = " + (x - upRight) + " y = " + (y + upRight));
+			pos.setPositionWithoutCorrect(x - upRight, y + upRight);
+			if (isPosEqualPlayer(pos,player)){
+				winCount++;
+			} else {
+				winCount = 0;
 			}
+			if (winCount == 2) { return true; }
+		}
 		return false;
 	}
 
+	private boolean isPosEqualPlayer(Position position, Player player){
+		return (isEndOfTable(position)) && getSymbolAtTable(position) == player.getPlayer();
+	}
 	private boolean isEndOfTable(Position position){
 		int x = position.getPosition()[0];
 		int y = position.getPosition()[1];
