@@ -8,16 +8,13 @@ public class InPut {
 		scan.close();
 	}
 	public static int[] getPosition(){
-		System.out.print("enter position: ");
+		System.out.print("enter position(Like \"1 1\"): ");
 		String value = scan.nextLine();
 		char[] b = value.toCharArray();
-		if (b.length > 2) {
-			System.out.println("You can`t use more 2 position (X and Y)");
-			System.exit(1);
-		}
-		int[] result = new int[b.length];
-		for (int i = 0; i < b.length; i++){
-			result[i] = (int) b[i];
+		String[] s = value.split(" ");
+		int[] result = new int[2];
+		for (int i = 0; i < result.length; i++){
+			result[i] = Integer.parseInt(s[i]);
 		}
 		return result;
 	}

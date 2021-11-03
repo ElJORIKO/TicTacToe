@@ -8,6 +8,8 @@ import main.player.Player;
 import main.table.Position;
 import main.table.Table;
 
+import java.util.Arrays;
+
 public class Main {
 	public static int HEIGHT = 4;
 	public static int LENGTH = 4;
@@ -28,7 +30,7 @@ public class Main {
 			System.out.println("Turn " + player.getPlayer());
 			int[] s;
 			do {
-				s = ConvertCodeToInt.codeToInt(InPut.getPosition());
+				s = InPut.getPosition();
 				position.setPosition(s[0],s[1]);
 			} while (!Table.setSymbol(position,player));
 			if (ifWin.ifPlayerWin(player, position)){

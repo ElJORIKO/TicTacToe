@@ -16,7 +16,7 @@ public class ComputerPlayer {
 		this.player = player;
 	}
 	public int[] actionDoStep() {
-		int min = 0, max = 3;
+		int min = 0, max = 4;
 		max -= min;
 		int result, result2;
 		Position pos;
