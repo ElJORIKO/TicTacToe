@@ -1,7 +1,6 @@
 package main.player;
 
-import main.table.Position;
-import main.table.Table;
+import main.table.*;
 
 
 public class ComputerPlayer {

@@ -1,14 +1,11 @@
 package main.start;
 
-import main.*;
 import main.inOut.InPut;
 import main.inOut.OutPut;
 import main.player.ComputerPlayer;
 import main.player.Player;
-import main.table.Position;
-import main.table.Table;
-
-import java.util.Arrays;
+import main.table.*;
+import main.wins.CheckWins;
 
 public class Main {
 	public static int HEIGHT = 4;
