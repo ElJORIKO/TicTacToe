@@ -24,8 +24,6 @@ public class ComputerPlayer {
 			result2 = ((int) (Math.random() * max) + min);
 			System.out.println("res 1 - " + result + " res 2 - " + result2);
 			pos = new Position();
-			char c = (char) result;
-			char c1 = (char) result2;
 			pos.setPositionWithoutCorrect(result,result2);
 		} while (!Table.test(pos));
 		pos.setPositionWithoutCorrect((result + 1), (result2 + 1));

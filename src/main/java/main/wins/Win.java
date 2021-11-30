@@ -8,11 +8,36 @@ public class Win {
 	General general = new General();
 	private int winCount = 0;
 	private Player actualPlayer;
-	public boolean isVin(Position position, Player player){
+	public boolean isWin(Player player, Position position){
 		general.setXY(position);
 		general.setTABLE();
 		actualPlayer = player;
 		return isVinAnyVector();
+	}
+	public boolean isWin(Player player, Position position, String vector){
+		general.setXY(position);
+		general.setTABLE();
+		actualPlayer = player;
+		switch (vector.toUpperCase()){
+			case ("LEFT"):
+				return horizontal("left");
+			case ("RIGHT"):
+				return horizontal("right");
+			case ("DOWNRIGHT"):
+				return diagonal("downRight");
+			case ("DOWNLEFT"):
+				return diagonal("downLeft");
+			case ("UPRIGHT"):
+				return diagonal("upRight");
+			case ("UPLEFT"):
+				return diagonal("upLeft");
+			case ("UP"):
+				return vertical("up");
+			case ("DOWN"):
+				return vertical("down");
+			default:
+				return false;
+		}
 	}
 	private boolean isVinAnyVector(){
 		return  horizontal("left") |

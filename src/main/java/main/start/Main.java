@@ -5,7 +5,7 @@ import main.inOut.OutPut;
 import main.player.ComputerPlayer;
 import main.player.Player;
 import main.table.*;
-import main.wins.CheckWins;
+import main.wins.Win;
 
 public class Main {
 	public static int HEIGHT = 4;
@@ -20,7 +20,7 @@ public class Main {
 		Player player = new Player('O');
 		Player player2 = new Player('X');
 		Position position = new Position();
-		CheckWins ifWin = new CheckWins();
+		Win win = new Win();
 		int count = 0;
 		while (Table.hasEmptyBlockAtTable()){
 			count++;
@@ -30,7 +30,7 @@ public class Main {
 				s = InPut.getPosition();
 				position.setPosition(s[0],s[1]);
 			} while (!Table.setSymbol(position,player));
-			if (ifWin.ifPlayerWin(player, position)){
+			if (win.isWin(player, position)){
 				OutPut.outPutTable();
 				System.out.println(player.getPlayer() + " win");
 				break;
@@ -53,7 +53,7 @@ public class Main {
 				s = computerPlayer.actionDoStep();
 				position.setPosition(s[0],s[1]);
 			} while (!Table.setSymbol(position,player2));
-			if (ifWin.ifPlayerWin(player2, position)){
+			if (win.isWin(player2, position)){
 				OutPut.outPutTable();
 				System.out.println(player2.getPlayer() + " win");
 				break;
