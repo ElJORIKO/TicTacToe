@@ -7,6 +7,15 @@ import main.table.Position;
 public class Win {
 	General general = new General();
 	private int winCount = 0;
+	private void winCountAdd(){
+		winCount++;
+	}
+	private boolean isWinEqualTwo(){
+		return winCount == 2;
+	}
+	private void resetWinCount(){
+		winCount = 0;
+	}
 	private Player actualPlayer;
 	public boolean isWin(Player player, Position position){
 		general.setXY(position);
@@ -42,12 +51,15 @@ public class Win {
 	private boolean isVinAnyVector(){
 		return  horizontal("left") |
 				horizontal("right") |
+				horizontal("any") |
 				diagonal("downRight") |
 				diagonal("downLeft") |
 				diagonal("upRight") |
 				diagonal("upLeft") |
+				diagonal("any") |
 				vertical("up") |
-				vertical("down");
+				vertical("down") |
+				vertical("any");
 	}
 	private boolean horizontal(String vector){
 		Position pos = new Position();
@@ -56,22 +68,36 @@ public class Win {
 			case ("LEFT"):
 				for (int horizontalLeft = 1; horizontalLeft <= 2; horizontalLeft++){
 					pos.setY(general.getY() - horizontalLeft);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
 				}
 			case ("RIGHT"):
 				for (int horizontalRight = 1; horizontalRight <=2; horizontalRight++){
 					pos.setY(general.getY() + horizontalRight);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
+				}
+			case ("ANY"):
+				pos.setY(general.getY() + 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				pos.setY(general.getY() - 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				if (isWinEqualTwo()) {
+					return true;
+				} else {
+					resetWinCount();
 				}
 		}
 		return false;
@@ -83,22 +109,36 @@ public class Win {
 			case ("UP"):
 				for (int verticalUp = 1; verticalUp <= 2; verticalUp++){
 					pos.setX(general.getX() + verticalUp);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
 				}
 			case ("DOWN"):
 				for (int verticalUp = 1; verticalUp <= 2; verticalUp++){
 					pos.setX(general.getX() - verticalUp);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
+				}
+			case ("ANY"):
+				pos.setX(general.getX() - 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				pos.setX(general.getX() + 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				if (isWinEqualTwo()) {
+					return true;
+				} else {
+					resetWinCount();
 				}
 		}
 		return false;
@@ -111,52 +151,83 @@ public class Win {
 				for (int downRight = 1; downRight <= 2; downRight++){
 					pos.setX(general.getX() + downRight);
 					pos.setY(general.getY() - downRight);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
 				}
 			case ("DOWNLEFT"):
 				for (int downLeft = 1; downLeft <= 2; downLeft++){
 					pos.setX(general.getX() + downLeft);
 					pos.setY(general.getY() + downLeft);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
 				}
 
 			case ("UPLEFT"):
 				for (int upLeft = 1; upLeft <= 2; upLeft++){
 					pos.setX(general.getX() - upLeft);
 					pos.setY(general.getY() - upLeft);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
 				}
 			case ("UPRIGHT"):
 				for (int upRight = 1; upRight <= 2; upRight++){
 					pos.setY(general.getY() + upRight);
 					pos.setX(general.getX() - upRight);
-					if (isPosEqualPlayer(pos,actualPlayer)){
-						winCount++;
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
 					} else {
-						winCount = 0;
+						resetWinCount();
 					}
-					if (winCount == 2) { return true; }
+					if (isWinEqualTwo()) { return true; }
+				}
+			case ("ANY"):
+				pos.setX(general.getX() + 1);
+				pos.setY(general.getY() + 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				pos.setX(general.getX() - 1);
+				pos.setY(general.getY() - 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+					if (isWinEqualTwo()) {
+						return true;
+					} else {
+						resetWinCount();
+					}
+				}
+				pos.setX(general.getX() + 1);
+				pos.setY(general.getY() - 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+				}
+				pos.setX(general.getX() - 1);
+				pos.setY(general.getY() - 1);
+				if (isPosEqualPlayer(pos)){
+					winCountAdd();
+					if (isWinEqualTwo()){
+						return true;
+					} else {
+						resetWinCount();
+					}
 				}
 		}
 		return false;
 	}
-	private boolean isPosEqualPlayer(Position position, Player player){
-		return (isEndOfTable(position)) && general.getSymbolAtTable(position) == player.getPlayer();
+	private boolean isPosEqualPlayer(Position position){
+		return (isEndOfTable(position)) && general.getSymbolAtTable(position) == actualPlayer.getPlayer();
 	}
 	private boolean isEndOfTable(Position position){
 		int x = position.getPosition()[0];

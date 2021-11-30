@@ -2,6 +2,8 @@ package main.player;
 
 import main.table.*;
 
+import java.util.Arrays;
+
 
 public class ComputerPlayer {
 	private char player;
@@ -14,7 +16,8 @@ public class ComputerPlayer {
 	public void setPlayer(char player){
 		this.player = player;
 	}
-	public int[] actionDoStep() {
+	public int[] actionDoStep(Position opponentStep) {
+		checkStepBefore(opponentStep);
 		int min = 0, max = 4;
 		max -= min;
 		int result, result2;
@@ -32,8 +35,6 @@ public class ComputerPlayer {
 	}
 
 	private void checkStepBefore(Position position){
-		int posX = position.getPosition()[0],
-				posY = position.getPosition()[1];
-
+		System.out.println(Arrays.toString(position.getPosition()));
 	}
 }

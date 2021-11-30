@@ -50,7 +50,7 @@ public class Main {
 			System.out.println("Turn " + computerPlayer.getPlayer());
 //			s = ConvertCodeToInt.codeToInt(InPut.getPosition());
 			do {
-				s = computerPlayer.actionDoStep();
+				s = computerPlayer.actionDoStep(position);
 				position.setPosition(s[0],s[1]);
 			} while (!Table.setSymbol(position,player2));
 			if (win.isWin(player2, position)){
