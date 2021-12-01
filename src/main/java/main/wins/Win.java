@@ -75,6 +75,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("RIGHT"):
 				for (int horizontalRight = 1; horizontalRight <=2; horizontalRight++){
 					pos.setY(general.getY() + horizontalRight);
@@ -85,6 +86,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("ANY"):
 				pos.setY(general.getY() + 1);
 				if (isPosEqualPlayer(pos)){
@@ -99,6 +101,7 @@ public class Win {
 				} else {
 					resetWinCount();
 				}
+				break;
 		}
 		return false;
 	}
@@ -116,6 +119,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("DOWN"):
 				for (int verticalUp = 1; verticalUp <= 2; verticalUp++){
 					pos.setX(general.getX() - verticalUp);
@@ -126,6 +130,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("ANY"):
 				pos.setX(general.getX() - 1);
 				if (isPosEqualPlayer(pos)){
@@ -158,6 +163,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("DOWNLEFT"):
 				for (int downLeft = 1; downLeft <= 2; downLeft++){
 					pos.setX(general.getX() + downLeft);
@@ -170,6 +176,7 @@ public class Win {
 					if (isWinEqualTwo()) { return true; }
 				}
 
+				break;
 			case ("UPLEFT"):
 				for (int upLeft = 1; upLeft <= 2; upLeft++){
 					pos.setX(general.getX() - upLeft);
@@ -181,6 +188,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("UPRIGHT"):
 				for (int upRight = 1; upRight <= 2; upRight++){
 					pos.setY(general.getY() + upRight);
@@ -192,6 +200,7 @@ public class Win {
 					}
 					if (isWinEqualTwo()) { return true; }
 				}
+				break;
 			case ("ANY"):
 				pos.setX(general.getX() + 1);
 				pos.setY(general.getY() + 1);

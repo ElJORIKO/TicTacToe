@@ -11,6 +11,12 @@ public class Position {
 		this.x = x;
 		this.y = y;
 	}
+	public void setPosition(Position position){
+		int x = position.getPosition()[0] - 1;
+		int y = position.getPosition()[1] - 1;
+		this.x = x;
+		this.y = y;
+	}
 	public void setX(int x){
 		this.x = x;
 	}

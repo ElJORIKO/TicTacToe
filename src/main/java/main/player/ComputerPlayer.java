@@ -6,17 +6,14 @@ import java.util.Arrays;
 
 
 public class ComputerPlayer {
-	private char player;
+	private final char player;
 	public ComputerPlayer(char player){
 		this.player = player;
 	}
 	public char getPlayer(){
 		return player;
 	}
-	public void setPlayer(char player){
-		this.player = player;
-	}
-	public int[] actionDoStep(Position opponentStep) {
+	public Position actionDoStep(Position opponentStep) {
 		checkStepBefore(opponentStep);
 		int min = 0, max = 4;
 		max -= min;
@@ -31,7 +28,7 @@ public class ComputerPlayer {
 		} while (!Table.test(pos));
 		pos.setPositionWithoutCorrect((result + 1), (result2 + 1));
 		Position pos2 = pos;
-		return pos2.getPosition();
+		return pos2;
 	}
 
 	private void checkStepBefore(Position position){

@@ -1,7 +1,7 @@
 package main.player;
 
 public class Player {
-	private char player;
+	private final char player;
 
 	public Player(char player) {
 		this.player = player;
@@ -9,8 +9,5 @@ public class Player {
 
 	public char getPlayer() {
 		return player;
-	}
-	public void setPlayer(char player) {
-		this.player = player;
 	}
 }
