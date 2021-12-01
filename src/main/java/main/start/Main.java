@@ -11,7 +11,7 @@ public class Main {
 	public static int HEIGHT = 4;
 	public static int LENGTH = 4;
 	public static void main(String[] args) {
-		Table.maleEmptyTable();
+		Table.makeEmptyTable();
 		OutPut.outPutTable();
 		ComputerPlayer computerPlayer = new ComputerPlayer('X');
 //		ComputerPlayer computerPlayer2 = new ComputerPlayer('O');
@@ -21,6 +21,7 @@ public class Main {
 		Player player2 = new Player('X');
 		Position position = new Position();
 		Win win = new Win();
+		computerPlayer.setAnotherPlayer(player);
 		int count = 0;
 		while (Table.hasEmptyBlockAtTable()){
 			count++;
@@ -35,16 +36,6 @@ public class Main {
 				System.out.println(player.getPlayer() + " win");
 				break;
 			}
-//			System.out.println("Turn - " + computerPlayer2);
-//			int[] s = computerPlayer2.actionDoStep();
-//			position.setPosition(s[0],s[1]);
-//			Table.setSymbol(position,computerPlayer2);
-//			if (ifWin.ifPlayerWin(computerPlayer2,position)){
-//				OutPut.outPutTable();
-//				System.out.println(computerPlayer.getPlayer() + " win");
-//				break;
-//			}
-
 			OutPut.outPutTable();
 			if (!Table.hasEmptyBlockAtTable()) { break; }
 			System.out.println("Turn " + computerPlayer.getPlayer());

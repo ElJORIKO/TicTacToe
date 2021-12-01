@@ -235,10 +235,10 @@ public class Win {
 		}
 		return false;
 	}
-	private boolean isPosEqualPlayer(Position position){
+	public boolean isPosEqualPlayer(Position position){
 		return (isEndOfTable(position)) && general.getSymbolAtTable(position) == actualPlayer.getPlayer();
 	}
-	private boolean isEndOfTable(Position position){
+	public boolean isEndOfTable(Position position){
 		int x = position.getPosition()[0];
 		int y = position.getPosition()[1];
 		if (x < 0 | y < 0){

@@ -23,7 +23,34 @@ public class Position {
 	public void setY(int y){
 		this.y = y;
 	}
+	public void decreaseY(){
+		this.y = y - 1;
+	}
+	public void decreaseX(){
+		this.x = x - 1;
+	}
+	public void decreaseYBy(int decreaseValue){
+		this.y = y - decreaseValue;
+	}
+	public void decreaseXBy(int decreaseValue){
+		this.x = x - decreaseValue;
+	}
+	public void increaseY(){
+		this.y = y + 1;
+	}
+	public void increaseX(){
+		this.x = x + 1;
+	}
+	public void increaseYBy(int increaseValue){
+		this.y = y + increaseValue;
+	}
+	public void increaseXBy(int increaseValue){
+		this.x = x + increaseValue;
+	}
 	public int[] getPosition(){
 		return new int[]{x, y};
+	}
+	public String getAsString(){
+		return "X - " + this.x + " Y - " + this.y;
 	}
 }

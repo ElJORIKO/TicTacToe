@@ -24,4 +24,9 @@ public class General {
 	public char getSymbolAtTable(Position position){
 		return TABLE[position.getPosition()[0]][position.getPosition()[1]];
 	}
+	public Position getPosition(){
+		Position pos = new Position();
+		pos.setPosition(this.x,this.y);
+		return pos;
+	}
 }

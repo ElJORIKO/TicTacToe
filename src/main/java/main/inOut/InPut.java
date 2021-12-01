@@ -1,5 +1,7 @@
 package main.inOut;
 
+import main.table.Table;
+
 import java.util.Scanner;
 
 public class InPut {
@@ -10,7 +12,15 @@ public class InPut {
 	public static int[] getPosition(){
 		System.out.print("enter position(Like \"1 1\"): ");
 		String value = scan.nextLine();
-		char[] b = value.toCharArray();
+		while (true){
+			if (value.equals("table")){
+				OutPut.outPutTable();
+				System.out.print("enter position(Like \"1 1\"): ");
+				value = scan.nextLine();
+			} else {
+				break;
+			}
+		}
 		String[] s = value.split(" ");
 		int[] result = new int[2];
 		for (int i = 0; i < result.length; i++){

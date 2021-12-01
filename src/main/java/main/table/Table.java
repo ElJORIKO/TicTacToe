@@ -15,7 +15,7 @@ public class Table {
 	public static char[][] getTable(){
 		return Table.table;
 	}
-	public static void maleEmptyTable(){
+	public static void makeEmptyTable(){
 		char[][] table = getTable();
 		for (int i = 0; i < Main.HEIGHT; i++){
 			for (int j = 0; j < Main.LENGTH; j++){
@@ -28,7 +28,6 @@ public class Table {
 		int[] pos = position.getPosition();
 		char[][] table = getTable();
 		if (!isBlockBusy(position)){
-			System.out.println("This bloc is busy");
 			return;
 		}
 		table[pos[0]][pos[1]] = player.getPlayer();
@@ -42,6 +41,11 @@ public class Table {
 		}
 		table[pos[0]][pos[1]] = player.getPlayer();
 		return true;
+	}
+	public static void removeSymbol(Position position){
+		int[] pos = position.getPosition();
+		char[][] table = getTable();
+		table[pos[0]][pos[1]] = SPACE;
 	}
 
 	public static boolean hasEmptyBlockAtTable(){
@@ -60,7 +64,6 @@ public class Table {
 	}
 	private static boolean isBlockBusy(Position position){
 		int[] pos = position.getPosition();
-		System.out.println(Arrays.toString(pos));
 		return getTable()[pos[0]][pos[1]] == SPACE;
 	}
 }
