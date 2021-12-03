@@ -10,17 +10,20 @@ import main.wins.Win;
 public class Main {
 	public static int HEIGHT = 4;
 	public static int LENGTH = 4;
-	public static void main(String[] args) {
+	private static final Win win = new Win();
+	public static void initialization(){
 		Table.makeEmptyTable();
 		OutPut.outPutTable();
-		ComputerPlayer computerPlayer = new ComputerPlayer('X');
+	}
+	public static void main(String[] args) {
+		initialization();
+		ComputerPlayer computerPlayer = new ComputerPlayer('O');
 //		ComputerPlayer computerPlayer2 = new ComputerPlayer('O');
 //		Player player = new Player(InPut.getPlayer());
 //		Player player2 = new Player(InPut.getPlayer());
-		Player player = new Player('O');
-		Player player2 = new Player('X');
+		Player player = new Player('X');
+		Player player2 = new Player('0');
 		Position position = new Position();
-		Win win = new Win();
 		computerPlayer.setAnotherPlayer(player);
 		int count = 0;
 		while (Table.hasEmptyBlockAtTable()){
@@ -50,7 +53,7 @@ public class Main {
 			}
 			OutPut.outPutTable();
 		}
-		System.out.println(count);
+		System.out.println("Total steps" + count);
 		InPut.closeScanner();
 	}
 }

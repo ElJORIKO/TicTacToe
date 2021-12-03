@@ -44,6 +44,10 @@ public class Win {
 				return vertical("up");
 			case ("DOWN"):
 				return vertical("down");
+			case ("ANY"):
+				return horizontal("any") |
+						diagonal("any") |
+						vertical("any");
 			default:
 				return false;
 		}
@@ -91,10 +95,18 @@ public class Win {
 				pos.setY(general.getY() + 1);
 				if (isPosEqualPlayer(pos)){
 					winCountAdd();
+					pos.increaseX();
+					if (isPosEqualPlayer(pos)){
+						return true;
+					}
 				}
 				pos.setY(general.getY() - 1);
 				if (isPosEqualPlayer(pos)){
 					winCountAdd();
+					pos.decreaseY();
+					if (isPosEqualPlayer(pos)){
+						return true;
+					}
 				}
 				if (isWinEqualTwo()) {
 					return true;
@@ -135,10 +147,22 @@ public class Win {
 				pos.setX(general.getX() - 1);
 				if (isPosEqualPlayer(pos)){
 					winCountAdd();
+					pos.setX(general.getX() - 2);
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
+					} else {
+						resetWinCount();
+					}
 				}
 				pos.setX(general.getX() + 1);
 				if (isPosEqualPlayer(pos)){
 					winCountAdd();
+					pos.setX(general.getX() + 2);
+					if (isPosEqualPlayer(pos)){
+						winCountAdd();
+					} else {
+						resetWinCount();
+					}
 				}
 				if (isWinEqualTwo()) {
 					return true;

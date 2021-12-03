@@ -3,11 +3,22 @@ package main.table;
 public class Position {
 	private int x;
 	private int y;
+	public Position (int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	public Position (){}
 	public void setPosition(int x, int y){
 		this.x = x - 1;
 		this.y = y - 1;
 	}
 	public void setPositionWithoutCorrect(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	public void setPositionWithoutCorrect(Position position){
+		int x = position.getPosition()[0];
+		int y = position.getPosition()[1];
 		this.x = x;
 		this.y = y;
 	}
