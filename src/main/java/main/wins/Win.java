@@ -21,7 +21,7 @@ public class Win {
 		general.setXY(position);
 		general.setTABLE();
 		actualPlayer = player;
-		return isVinAnyVector();
+		return isWinAnyVector();
 	}
 	public boolean isWin(Player player, Position position, String vector){
 		general.setXY(position);
@@ -52,7 +52,7 @@ public class Win {
 				return false;
 		}
 	}
-	private boolean isVinAnyVector(){
+	private boolean isWinAnyVector(){
 		return  horizontal("left") |
 				horizontal("right") |
 				horizontal("any") |
@@ -262,15 +262,8 @@ public class Win {
 	public boolean isPosEqualPlayer(Position position){
 		return (isEndOfTable(position)) && general.getSymbolAtTable(position) == actualPlayer.getPlayer();
 	}
-	public boolean isEndOfTable(Position position){
-		int x = position.getPosition()[0];
-		int y = position.getPosition()[1];
-		if (x < 0 | y < 0){
-			return false;
-		} else if (x > Main.HEIGHT - 1 | y > Main.LENGTH - 1){
-			return false;
-		} else {
-			return true;
-		}
+	public boolean isEndOfTable(Position pos){
+		return !( (pos.getX() < 0 | pos.getY() < 0) |
+				(pos.getX() > Main.HEIGHT - 1 | pos.getY() > Main.LENGTH - 1) );
 	}
 }

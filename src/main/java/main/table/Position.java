@@ -61,7 +61,17 @@ public class Position {
 	public int[] getPosition(){
 		return new int[]{x, y};
 	}
+	public int getY(){
+		return this.y;
+	}
+	public int getX(){
+		return this.x;
+	}
 	public String getAsString(){
 		return "X - " + this.x + " Y - " + this.y;
+	}
+	@Override
+	public String toString(){
+		return this.x + "." + this.y;
 	}
 }

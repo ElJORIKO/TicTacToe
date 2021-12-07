@@ -3,8 +3,7 @@ package main.table;
 import main.player.ComputerPlayer;
 import main.player.Player;
 import main.start.Main;
-
-import java.util.Arrays;
+import main.wins.Win;
 
 public class Table {
 	private static final char SPACE = 32;
@@ -24,28 +23,29 @@ public class Table {
 		}
 	}
 
-	public static void setSymbol(Position position, ComputerPlayer player){
-		int[] pos = position.getPosition();
+	public static void setSymbol(Position pos, ComputerPlayer player){
 		char[][] table = getTable();
-		if (!isBlockBusy(position)){
+		if (!isBlockBusy(pos)){
 			return;
 		}
-		table[pos[0]][pos[1]] = player.getPlayer();
+		table[pos.getX()][pos.getY()] = player.getPlayer();
 	}
-	public static boolean setSymbol(Position position, Player player){
-		int[] pos = position.getPosition();
+	public static boolean setSymbol(Position pos, Player player){
 		char[][] table = getTable();
-		if (!isBlockBusy(position)){
+		if (!new Win().isEndOfTable(pos)){
+			System.out.println("Is out of table");
+			return false;
+		}
+		if (!isBlockBusy(pos)){
 			System.out.println("This bloc is busy");
 			return false;
 		}
-		table[pos[0]][pos[1]] = player.getPlayer();
+		table[pos.getX()][pos.getY()] = player.getPlayer();
 		return true;
 	}
-	public static void removeSymbol(Position position){
-		int[] pos = position.getPosition();
+	public static void removeSymbol(Position pos){
 		char[][] table = getTable();
-		table[pos[0]][pos[1]] = SPACE;
+		table[pos.getX()][pos.getY()] = SPACE;
 	}
 
 	public static boolean hasEmptyBlockAtTable(){
@@ -62,8 +62,7 @@ public class Table {
 	public static boolean test(Position position){
 		return isBlockBusy(position);
 	}
-	private static boolean isBlockBusy(Position position){
-		int[] pos = position.getPosition();
-		return getTable()[pos[0]][pos[1]] == SPACE;
+	private static boolean isBlockBusy(Position pos){
+		return getTable()[pos.getX()][pos.getY()] == SPACE;
 	}
 }
