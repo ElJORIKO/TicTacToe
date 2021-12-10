@@ -59,6 +59,9 @@ public class Table {
 		}
 		return false;
 	}
+	public static char getSymbolAtTable(Position position){
+		return table[position.getX()][position.getY()];
+	}
 	public static boolean test(Position position){
 		return isBlockBusy(position);
 	}

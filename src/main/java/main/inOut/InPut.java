@@ -17,6 +17,8 @@ public class InPut {
 				OutPut.outPutTable();
 				System.out.print("enter position(Like \"1 1\"): ");
 				value = scan.nextLine();
+			} else if (value.equals("exit")) {
+				System.exit(0);
 			} else {
 				break;
 			}
