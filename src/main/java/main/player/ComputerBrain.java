@@ -55,7 +55,7 @@ public class ComputerBrain {
 		}
 		if (win.isEndOfTable(pos) && Table.setSymbol(pos,anotherPlayer)){
 			OutPut.outPutTable();
-			if (win.isWin(anotherPlayer,pos, "any")){
+			if (win.isWin(anotherPlayer,pos)){
 				System.out.println("Player must win\nAt " + pos.getAsString());
 				Table.removeSymbol(pos);
 				position = pos;
