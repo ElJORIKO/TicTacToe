@@ -34,7 +34,6 @@ public class ComputerBrain {
 		byte shiftVertical = 0, shiftHorizontal = 0;
 		while (shiftVertical < 3){
 			while (shiftHorizontal < 3){
-				System.out.printf("V - %s, H - %s\n",shiftVertical,shiftHorizontal);
 				if (anotherPlayerCanWinAtXLine(pos, startPosition)) {
 					return true;
 				}

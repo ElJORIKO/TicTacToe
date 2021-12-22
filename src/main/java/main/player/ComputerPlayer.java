@@ -22,16 +22,16 @@ public class ComputerPlayer {
 		if (computerBrain.isCanDoStep(opponentStep)){
 			return computerBrain.getPositionCorrect();
 		}
-		int max = Main.LENGTH;
-		int result, result2;
-		Position pos;
+		int maxLength = Main.LENGTH;
+		int maxHeight = Main.HEIGHT;
+		int posX, posY;
+		Position pos = new Position();
 		do {
-			result = ((int) (Math.random() * max));
-			result2 = ((int) (Math.random() * max));
-			pos = new Position();
-			pos.setPositionWithoutCorrect(result,result2);
+			posY = ((int) (Math.random() * maxLength));
+			posX = ((int) (Math.random() * maxHeight));
+			pos.setPositionWithoutCorrect(posX, posY);
 		} while (!Table.test(pos));
-		pos.setPositionWithoutCorrect((result + 1), (result2 + 1));
+		pos.setPositionWithoutCorrect((posX + 1), (posY + 1));
 		System.out.println("Set random\n" + pos.getAsString() );
 		return pos;
 	}
